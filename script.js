@@ -99,11 +99,14 @@ async function api(action, payload = {}) {
 function setButtonLoading(button, loading, loadingText = 'Aguarde...') {
   if (!button) return;
   if (loading) {
-    button.dataset.originalText = button.textContent;
+    button.dataset.originalHtml = button.innerHTML;
     button.textContent = loadingText;
     button.disabled = true;
   } else {
-    button.textContent = button.dataset.originalText || button.textContent;
+    if (button.dataset.originalHtml) {
+      button.innerHTML = button.dataset.originalHtml;
+      delete button.dataset.originalHtml;
+    }
     button.disabled = false;
   }
 }
@@ -426,6 +429,36 @@ window.toggleUser = async function (id, ativo) {
   catch (err) { alert(err.message); }
 };
 
+async function exportReport() {
+  const button = $('#exportReportButton');
+  setButtonLoading(button, true, 'Gerando Excel...');
+  try {
+    const report = await api('exportReport');
+    if (!report || !report.base64) throw new Error('O arquivo não foi gerado corretamente.');
+
+    const binary = atob(report.base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+
+    const blob = new Blob([bytes], {
+      type: report.mimeType || 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = report.fileName || 'Euricca-Balanco.xlsx';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast('Relatório Excel exportado.');
+  } catch (err) {
+    alert(err.message || 'Não foi possível exportar o relatório.');
+  } finally {
+    setButtonLoading(button, false);
+  }
+}
+
 function switchView(viewName) {
   const map = { dashboard: ['dashboardView', 'Dashboard'], products: ['productsView', 'Produtos'], users: ['usersView', 'Usuários'] };
   const target = map[viewName];
@@ -441,6 +474,7 @@ renderCategoryPicker();
 $('#loginForm').addEventListener('submit', login);
 $('#logoutButton').addEventListener('click', () => logout(true));
 $('#newProductTop').addEventListener('click', newProduct);
+$('#exportReportButton').addEventListener('click', exportReport);
 $('#newProductButton').addEventListener('click', newProduct);
 $('#productForm').addEventListener('submit', saveProduct);
 $('#saveAndNextButton').addEventListener('click', () => persistProduct('next'));

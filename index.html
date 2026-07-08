@@ -3,33 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#171512" />
+  <meta name="theme-color" content="#02B9C1" />
   <title>Euricca Balanço</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <section id="loginView" class="login-shell">
-    <div class="login-card">
-      <div class="brand-mark">E</div>
-      <p class="eyebrow">CONTROLE DE ESTOQUE</p>
-      <h1>Euricca <span>Balanço</span></h1>
-      <p class="muted">Entre com seu acesso para registrar e acompanhar os produtos.</p>
+    <div class="login-brand-panel">
+      <img src="assets/eu-ricca-marca.png" alt="Eu Ricca Semijoias" class="login-logo" />
+      <div class="login-brand-copy">
+        <span>CONTROLE INTERNO</span>
+        <h2>Balanço simples.<br>Cadastro rápido.</h2>
+        <p>Organize o estoque, acompanhe os valores e registre cada peça com agilidade.</p>
+      </div>
+    </div>
 
-      <form id="loginForm" class="form-stack">
-        <label>
-          <span>E-mail</span>
-          <input id="loginEmail" type="email" autocomplete="username" required placeholder="seu@email.com" />
-        </label>
-        <label>
-          <span>Senha</span>
-          <input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Sua senha" />
-        </label>
-        <button id="loginButton" class="btn btn-primary btn-full" type="submit">Entrar</button>
-      </form>
-      <p id="loginError" class="form-error hidden"></p>
+    <div class="login-form-panel">
+      <div class="login-card">
+        <div class="mobile-brand">
+          <img src="assets/eu-ricca-marca.png" alt="Eu Ricca Semijoias" />
+        </div>
+        <p class="eyebrow">EURICCA BALANÇO</p>
+        <h1>Bem-vindo</h1>
+        <p class="muted">Entre com seu acesso para continuar.</p>
+
+        <form id="loginForm" class="form-stack login-form">
+          <label>
+            <span>E-mail</span>
+            <input id="loginEmail" type="email" autocomplete="username" required placeholder="seu@email.com" />
+          </label>
+          <label>
+            <span>Senha</span>
+            <input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Sua senha" />
+          </label>
+          <button id="loginButton" class="btn btn-primary btn-full" type="submit">Entrar no sistema</button>
+        </form>
+        <p id="loginError" class="form-error hidden"></p>
+      </div>
     </div>
   </section>
 
@@ -37,24 +50,30 @@
     <aside class="sidebar">
       <div>
         <div class="sidebar-brand">
-          <div class="brand-mark small">E</div>
+          <div class="brand-butterfly" aria-hidden="true">♡</div>
           <div>
-            <strong>Euricca</strong>
-            <span>Balanço</span>
+            <strong>EU RICCA</strong>
+            <span>BALANÇO</span>
           </div>
         </div>
 
         <nav class="sidebar-nav">
-          <button class="nav-item active" data-view="dashboard">Dashboard</button>
-          <button class="nav-item" data-view="products">Produtos</button>
-          <button id="usersNav" class="nav-item hidden" data-view="users">Usuários</button>
+          <button class="nav-item active" data-view="dashboard" type="button">
+            <span class="nav-icon">⌂</span><span>Dashboard</span>
+          </button>
+          <button class="nav-item" data-view="products" type="button">
+            <span class="nav-icon">◇</span><span>Produtos</span>
+          </button>
+          <button id="usersNav" class="nav-item hidden" data-view="users" type="button">
+            <span class="nav-icon">♙</span><span>Usuários</span>
+          </button>
         </nav>
       </div>
 
       <div class="sidebar-footer">
         <div class="user-mini">
           <div id="userInitial" class="avatar">U</div>
-          <div>
+          <div class="user-mini-copy">
             <strong id="userName">Usuário</strong>
             <span id="userRole">Equipe</span>
           </div>
@@ -69,35 +88,41 @@
           <p class="eyebrow">EURICCA BALANÇO</p>
           <h2 id="pageTitle">Dashboard</h2>
         </div>
-        <button id="newProductTop" class="btn btn-primary" type="button">+ Novo produto</button>
+        <button id="newProductTop" class="btn btn-primary" type="button">
+          <span>＋</span> Novo produto
+        </button>
       </header>
 
       <section id="dashboardView" class="view-section">
         <div class="metrics-grid">
           <article class="metric-card">
+            <div class="metric-icon">◇</div>
             <span>Produtos cadastrados</span>
             <strong id="metricProducts">0</strong>
             <small>Referências ativas</small>
           </article>
           <article class="metric-card">
+            <div class="metric-icon">▦</div>
             <span>Total de peças</span>
             <strong id="metricUnits">0</strong>
             <small>Quantidade em estoque</small>
           </article>
           <article class="metric-card highlight">
+            <div class="metric-icon">R$</div>
             <span>Valor total do estoque</span>
             <strong id="metricValue">R$ 0,00</strong>
             <small>Valor consolidado</small>
           </article>
           <article class="metric-card">
-            <span>Categorias</span>
+            <div class="metric-icon">⌘</div>
+            <span>Categorias ativas</span>
             <strong id="metricCategories">0</strong>
-            <small>Tipos de produtos</small>
+            <small>Tipos com produtos</small>
           </article>
         </div>
 
-        <div class="panel-grid">
-          <article class="panel">
+        <div class="panel-grid dashboard-panels">
+          <article class="panel panel-large">
             <div class="panel-head">
               <div>
                 <p class="eyebrow">RESUMO</p>
@@ -110,25 +135,49 @@
           <article class="panel">
             <div class="panel-head">
               <div>
-                <p class="eyebrow">ÚLTIMOS REGISTROS</p>
-                <h3>Produtos recentes</h3>
+                <p class="eyebrow">ACABAMENTOS</p>
+                <h3>Distribuição do estoque</h3>
               </div>
             </div>
-            <div id="recentProducts" class="recent-list empty-state">Nenhum produto cadastrado ainda.</div>
+            <div id="finishSummary" class="finish-list empty-state">Nenhum produto cadastrado ainda.</div>
           </article>
         </div>
+
+        <article class="panel recent-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">ÚLTIMOS REGISTROS</p>
+              <h3>Produtos recentes</h3>
+            </div>
+            <button class="text-button" type="button" data-view-link="products">Ver todos</button>
+          </div>
+          <div id="recentProducts" class="recent-grid empty-state">Nenhum produto cadastrado ainda.</div>
+        </article>
       </section>
 
       <section id="productsView" class="view-section hidden">
         <div class="panel table-panel">
           <div class="table-toolbar">
-            <div class="search-wrap">
-              <input id="productSearch" type="search" placeholder="Buscar por código ou produto..." />
+            <div class="toolbar-title">
+              <p class="eyebrow">ESTOQUE</p>
+              <h3>Todos os produtos</h3>
             </div>
-            <select id="categoryFilter">
-              <option value="">Todas as categorias</option>
-            </select>
-            <button id="newProductButton" class="btn btn-primary" type="button">+ Novo produto</button>
+            <div class="toolbar-controls">
+              <div class="search-wrap">
+                <span>⌕</span>
+                <input id="productSearch" type="search" placeholder="Buscar produto ou código..." />
+              </div>
+              <select id="categoryFilter" aria-label="Filtrar por categoria">
+                <option value="">Todas as categorias</option>
+              </select>
+              <select id="finishFilter" aria-label="Filtrar por acabamento">
+                <option value="">Todos os acabamentos</option>
+                <option value="Ródio">Ródio</option>
+                <option value="Ouro">Ouro</option>
+                <option value="Prata">Prata</option>
+              </select>
+              <button id="newProductButton" class="btn btn-primary" type="button">＋ Novo produto</button>
+            </div>
           </div>
 
           <div class="table-wrap">
@@ -138,6 +187,7 @@
                   <th>Código</th>
                   <th>Produto</th>
                   <th>Categoria</th>
+                  <th>Acabamento</th>
                   <th>Qtd.</th>
                   <th>Valor unit.</th>
                   <th>Total</th>
@@ -155,11 +205,11 @@
       <section id="usersView" class="view-section hidden">
         <div class="panel table-panel">
           <div class="table-toolbar">
-            <div>
+            <div class="toolbar-title">
               <p class="eyebrow">ACESSOS</p>
               <h3>Equipe</h3>
             </div>
-            <button id="newUserButton" class="btn btn-primary" type="button">+ Novo usuário</button>
+            <button id="newUserButton" class="btn btn-primary" type="button">＋ Novo usuário</button>
           </div>
 
           <div class="table-wrap">
@@ -183,60 +233,88 @@
     </main>
   </div>
 
-  <div id="productModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
-    <div class="modal-card">
+  <div id="productModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+    <div class="modal-card product-modal-card">
       <div class="modal-head">
         <div>
-          <p class="eyebrow">PRODUTO</p>
+          <p class="eyebrow">CADASTRO RÁPIDO</p>
           <h3 id="productModalTitle">Novo produto</h3>
+          <p class="modal-subtitle">Selecione a categoria e preencha apenas o essencial.</p>
         </div>
-        <button class="icon-btn" data-close="productModal" type="button">×</button>
+        <button class="icon-btn" data-close="productModal" type="button" aria-label="Fechar">×</button>
       </div>
 
-      <form id="productForm" class="form-grid">
+      <form id="productForm" class="product-form">
         <input id="productId" type="hidden" />
-        <label>
-          <span>Código</span>
-          <input id="productCode" type="text" placeholder="Automático se vazio" />
-        </label>
-        <label>
-          <span>Produto *</span>
-          <input id="productName" type="text" required placeholder="Ex.: Colar Aurora" />
-        </label>
-        <label>
-          <span>Categoria *</span>
-          <input id="productCategory" type="text" required placeholder="Ex.: Colares" list="categoryOptions" />
-          <datalist id="categoryOptions"></datalist>
-        </label>
-        <label>
-          <span>Quantidade *</span>
-          <input id="productQuantity" type="number" min="0" step="1" required value="1" />
-        </label>
-        <label>
-          <span>Valor unitário *</span>
-          <input id="productUnitValue" type="number" min="0" step="0.01" required placeholder="0,00" />
-        </label>
-        <label class="span-2">
-          <span>Observação</span>
-          <textarea id="productObservation" rows="3" placeholder="Informação opcional"></textarea>
-        </label>
-        <p id="productFormError" class="form-error span-2 hidden"></p>
-        <div class="modal-actions span-2">
+        <input id="productCategory" type="hidden" required />
+        <input id="productFinish" type="hidden" required />
+
+        <div class="field-block">
+          <div class="field-heading">
+            <span>Categoria *</span>
+            <small>Toque para selecionar</small>
+          </div>
+          <div id="categoryPicker" class="category-picker"></div>
+        </div>
+
+        <div class="field-block">
+          <div class="field-heading">
+            <span>Acabamento *</span>
+            <small>Escolha uma opção</small>
+          </div>
+          <div id="finishPicker" class="segmented-picker">
+            <button type="button" class="segment-btn" data-finish="Ródio">Ródio</button>
+            <button type="button" class="segment-btn" data-finish="Ouro">Ouro</button>
+            <button type="button" class="segment-btn" data-finish="Prata">Prata</button>
+          </div>
+        </div>
+
+        <div class="form-grid compact-grid">
+          <label class="span-2">
+            <span>Nome da peça *</span>
+            <input id="productName" type="text" required placeholder="Ex.: Argola Lisa" autocomplete="off" />
+          </label>
+          <label>
+            <span>Quantidade *</span>
+            <input id="productQuantity" type="number" min="0" step="1" required value="1" inputmode="numeric" />
+          </label>
+          <label>
+            <span>Valor unitário *</span>
+            <input id="productUnitValue" type="number" min="0" step="0.01" required placeholder="0,00" inputmode="decimal" />
+          </label>
+          <label>
+            <span>Código</span>
+            <input id="productCode" type="text" placeholder="Gerado automaticamente" autocomplete="off" />
+          </label>
+          <label>
+            <span>Valor total</span>
+            <div id="productTotalPreview" class="total-preview">R$ 0,00</div>
+          </label>
+          <label class="span-2">
+            <span>Observação</span>
+            <textarea id="productObservation" rows="2" placeholder="Opcional"></textarea>
+          </label>
+        </div>
+
+        <p id="productFormError" class="form-error hidden"></p>
+        <div class="modal-actions product-actions">
           <button class="btn btn-ghost" data-close="productModal" type="button">Cancelar</button>
+          <button id="saveAndNextButton" class="btn btn-secondary" type="button">Salvar e cadastrar outro</button>
           <button id="saveProductButton" class="btn btn-primary" type="submit">Salvar produto</button>
         </div>
+        <small class="shortcut-tip">Atalho: Ctrl + Enter salva e abre o próximo cadastro.</small>
       </form>
     </div>
   </div>
 
-  <div id="userModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+  <div id="userModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="userModalTitle">
     <div class="modal-card small-modal">
       <div class="modal-head">
         <div>
           <p class="eyebrow">USUÁRIO</p>
-          <h3>Novo acesso</h3>
+          <h3 id="userModalTitle">Novo acesso</h3>
         </div>
-        <button class="icon-btn" data-close="userModal" type="button">×</button>
+        <button class="icon-btn" data-close="userModal" type="button" aria-label="Fechar">×</button>
       </div>
 
       <form id="userForm" class="form-stack">
@@ -268,7 +346,7 @@
     </div>
   </div>
 
-  <div id="toast" class="toast hidden"></div>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
   <script src="script.js"></script>
 </body>

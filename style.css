@@ -143,6 +143,7 @@ button { cursor: pointer; }
 .main-content { min-width: 0; padding: 0 34px 40px; }
 .topbar { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .topbar h2 { margin: 6px 0 0; font-size: 30px; letter-spacing: -.03em; }
+.topbar-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 .view-section { animation: fadeIn .18s ease; }
 @keyframes fadeIn { from { opacity: .2; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -308,6 +309,7 @@ tbody tr:hover { background: #FBFEFE; }
   .nav-item { min-height: 50px; }
   .main-content { padding: 0 14px 92px; }
   .topbar { min-height: 96px; }
+  .topbar-actions { gap: 8px; flex-wrap: nowrap; }
   .topbar h2 { font-size: 26px; }
   .topbar .btn { font-size: 0; width: 46px; padding-inline: 0; }
   .topbar .btn span { font-size: 22px; }

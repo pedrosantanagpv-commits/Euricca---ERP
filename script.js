@@ -332,6 +332,7 @@ window.editProduct = function (id) {
   $('#productName').value = p.produto;
   $('#productQuantity').value = p.quantidade;
   $('#productUnitValue').value = p.valorUnitario;
+  $('#productBuyValue').value = p.valorCompraUnitario || 0;
   $('#productObservation').value = p.observacao || '';
   selectCategory(p.categoria);
   selectFinish(p.acabamento || '');
@@ -359,6 +360,7 @@ async function persistProduct(mode = 'close') {
     acabamento: $('#productFinish').value,
     quantidade: Number($('#productQuantity').value),
     valorUnitario: Number($('#productUnitValue').value),
+    valorCompraUnitario: Number($('#productBuyValue').value || 0),
     observacao: $('#productObservation').value.trim(),
   };
 

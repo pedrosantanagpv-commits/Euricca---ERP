@@ -192,6 +192,8 @@ function renderDashboard() {
   $('#metricUnits').textContent = Number(d.totalPecas || 0).toLocaleString('pt-BR');
   $('#metricValue').textContent = money(d.valorTotal || 0);
   $('#metricCategories').textContent = Number(d.totalCategorias || 0).toLocaleString('pt-BR');
+  $('#metricInvested').textContent = money(d.valorInvestido || 0);
+  $('#metricProfit').textContent = money(d.lucroPotencial || 0);
 
   const categorySummary = $('#categorySummary');
   const categories = d.porCategoria || [];

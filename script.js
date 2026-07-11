@@ -297,8 +297,17 @@ function selectFinish(name) {
 
 function updateTotalPreview() {
   const qty = Number($('#productQuantity').value || 0);
-  const unit = Number($('#productUnitValue').value || 0);
-  $('#productTotalPreview').textContent = money(qty * unit);
+
+  const sell = Number($('#productUnitValue').value || 0);
+  const buy = Number($('#productBuyValue').value || 0);
+
+  $('#productTotalPreview').textContent = money(qty * sell);
+
+  const buyPreview = $('#productBuyTotalPreview');
+
+  if (buyPreview) {
+    buyPreview.textContent = money(qty * buy);
+  }
 }
 
 function resetProductForm({ keepSelections = false } = {}) {

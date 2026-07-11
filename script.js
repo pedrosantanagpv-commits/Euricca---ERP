@@ -491,6 +491,7 @@ $('#productForm').addEventListener('submit', saveProduct);
 $('#saveAndNextButton').addEventListener('click', () => persistProduct('next'));
 $('#productQuantity').addEventListener('input', updateTotalPreview);
 $('#productUnitValue').addEventListener('input', updateTotalPreview);
+$('#productBuyValue').addEventListener('input', updateTotalPreview);
 $('#newUserButton').addEventListener('click', () => { $('#userForm').reset(); clearError($('#userFormError')); openModal('userModal'); });
 $('#userForm').addEventListener('submit', saveUser);
 $('#productSearch').addEventListener('input', renderProducts);
